@@ -34,6 +34,17 @@ function App() {
               />
             </div>
 
+            <div className="mb-3">
+              <label className="form-label">Title</label>
+              <input className="form-control"
+                type="text"
+                value={formData.title}
+                onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                placeholder="Enter a title of the post"
+                required
+              />
+            </div>
+
           </form>
         </div>
       </main>
