@@ -1,11 +1,19 @@
+import { useState } from "react";
+
 
 function App() {
 
+  const [formData, setFormData] = useState({
+    author: "",
+    title: "",
+    body: "",
+    public: false
+  })
 
 
   return (
     <>
-      <header className="py-3 text-center">
+      <header className="py-3 text-center bg-success text-light">
         <h1>Post Form</h1>
       </header>
 
@@ -16,22 +24,14 @@ function App() {
 
             <div className="mb-3">
               <label className="form-label">Author</label>
-              <input type="text" className="form-control" required />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Title</label>
-              <input type="text" className="form-control" required />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Body</label>
-              <input type="text" className="form-control" required />
-            </div>
-
-            <div className="mb-3">
-              <label className="form-label">Public</label>
-              <input type="text" className="form-control" required />
+              <input className="form-control"
+                type="text"
+                name="author"
+                value={formData.author}
+                onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                placeholder="Enter the author's name of the post"
+                required
+              />
             </div>
 
           </form>
