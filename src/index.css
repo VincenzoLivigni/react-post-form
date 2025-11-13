@@ -1,1 +1,5 @@
 @import url("bootstrap");
+
+textarea {
+    height: 100px;
+}

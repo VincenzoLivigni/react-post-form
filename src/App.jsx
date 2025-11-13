@@ -11,6 +11,7 @@ function App() {
   })
 
 
+
   return (
     <>
       <header className="py-3 text-center bg-success text-light">
@@ -38,9 +39,22 @@ function App() {
               <label className="form-label">Title</label>
               <input className="form-control"
                 type="text"
+                name="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                 placeholder="Enter a title of the post"
+                required
+              />
+            </div>
+
+            <div className="mb-3">
+              <label className="form-label">Body</label>
+              <textarea className="form-control"
+                type="text"
+                name="body"
+                value={formData.body}
+                onChange={(e) => setFormData({ ...formData, body: e.target.value })}
+                placeholder="Enter the content of the post"
                 required
               />
             </div>
