@@ -1,5 +1,7 @@
 import { useState } from "react";
+import axios from "axios";
 
+const url = "https://67c5b4f3351c081993fb1ab6.mockapi.io/api/posts"
 
 function App() {
 
@@ -10,6 +12,20 @@ function App() {
     public: false
   })
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log(formData);
+
+    axios.post(url, formData, {
+      headers: { "content-type": "application/json" }
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
 
   return (
@@ -21,7 +37,7 @@ function App() {
       <main>
         <div className="container mt-5">
           <h3>Compila il form</h3>
-          <form className="p-3 border bg-success text-light">
+          <form className="p-3 border bg-success text-light" onSubmit={handleSubmit}>
 
             <div className="mb-3">
               <label className="form-label">Author</label>
@@ -65,11 +81,11 @@ function App() {
                 name="public"
                 value={formData.public}
                 onChange={(e) => setFormData({ ...formData, public: e.target.checked })}
-                required
               />
               <label className="publish form-label">Select to publish</label>
             </div>
 
+            <button type="submit" className="btn btn-light text-success">Send</button>
           </form>
         </div>
       </main>
